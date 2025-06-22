@@ -13,9 +13,7 @@ const AboutPage = () => {
       <AboutHeroSection />
       <About />
       <MissionSection />
-      <StatsSection />
       {/* <TimelineSection /> */}
-      <TeamSection />
       {/* <CTASection /> */}
     </div>
   );

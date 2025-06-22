@@ -10,7 +10,7 @@ const AboutHeroSection = () => {
   return (
     <section
       ref={ref}
-      className="relative h-screen flex items-center justify-center bg-slate-950 text-white"
+      className="relative h-[70vh] flex items-center justify-center bg-slate-950 text-white"
     >
       {/* Background Elements */}
       <div className="absolute inset-0">

@@ -10,6 +10,7 @@ import {
   TrendingUp,
   ArrowRight,
 } from "lucide-react";
+import StatsSection from "components/about/Stats";
 
 type FeatureCardProps = {
   icon: React.ReactNode;
@@ -31,21 +32,21 @@ const FeatureCard = ({
       <div className="group relative" style={{ animationDelay: `${delay}ms` }}>
         <div className="relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border-2 border-gray-100 hover:border-blue-900/20 overflow-hidden">
           {/* Decorative corner */}
-          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-blue-900 to-blue-800 transform rotate-45 translate-x-10 -translate-y-10 group-hover:scale-110 transition-transform duration-500"></div>
+          <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-slate-900 to-slate-800 transform rotate-45 translate-x-10 -translate-y-10 group-hover:scale-110 transition-transform duration-500"></div>
 
           {/* Icon container */}
           <div className="relative z-10 mb-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-900 rounded-2xl shadow-lg group-hover:rotate-12 transition-all duration-500">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-slate-950 rounded-2xl shadow-lg group-hover:rotate-12 transition-all duration-500">
               <div className="text-white">{icon}</div>
             </div>
           </div>
 
           <div className="relative z-10">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-700 transition-colors duration-300">
+            <h3 className="text-2xl font-bold text-slate-950 mb-4 group-hover:text-slate-700 transition-colors duration-300">
               {title}
             </h3>
             <p className="text-gray-600 leading-relaxed mb-4">{description}</p>
-            <div className="flex items-center text-blue-900 font-medium group-hover:translate-x-2 transition-transform duration-300">
+            <div className="flex items-center text-slate-950 font-medium group-hover:translate-x-2 transition-transform duration-300">
               <span className="mr-2">Learn More</span>
               <ArrowRight size={16} />
             </div>
@@ -64,14 +65,14 @@ const FeatureCard = ({
 
           {/* Floating icon */}
           <div className="relative z-10 mb-6 flex items-center">
-            <div className="w-16 h-16 bg-blue-900 rounded-xl flex items-center justify-center shadow-lg mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+            <div className="w-16 h-16 bg-slate-950 rounded-xl flex items-center justify-center shadow-lg mr-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
               <div className="text-white">{icon}</div>
             </div>
-            <div className="w-2 h-2 bg-blue-900 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+            <div className="w-2 h-2 bg-slate-950 rounded-full group-hover:scale-150 transition-transform duration-300"></div>
           </div>
 
           <div className="relative z-10">
-            <h3 className="text-2xl font-bold text-blue-900 mb-4">{title}</h3>
+            <h3 className="text-2xl font-bold text-slate-950 mb-4">{title}</h3>
             <p className="text-gray-600 leading-relaxed">{description}</p>
           </div>
         </div>
@@ -88,10 +89,10 @@ const FeatureCard = ({
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-blue-800/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
       <div className="relative z-10">
-        <div className="inline-flex items-center justify-center w-18 h-18 bg-blue-900 rounded-3xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+        <div className="inline-flex items-center justify-center w-18 h-18 bg-slate-950 rounded-3xl mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
           <div className="text-white">{icon}</div>
         </div>
-        <h3 className="text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-700 transition-colors duration-300">
+        <h3 className="text-2xl font-bold text-slate-950 mb-4 group-hover:text-slate-700 transition-colors duration-300">
           {title}
         </h3>
         <p className="text-gray-600 leading-relaxed">{description}</p>
@@ -126,10 +127,10 @@ const HowItWorks = () => {
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="text-center mb-20">
-          <div className="inline-block px-6 py-2 bg-blue-900 text-white rounded-full text-sm font-semibold mb-6">
+          <div className="inline-block px-6 py-2 bg-slate-950 text-white rounded-full text-sm font-semibold mb-6">
             OUR PROCESS
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-950 mb-8">
             How We Work
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -149,12 +150,12 @@ const HowItWorks = () => {
                 variant="diamond"
               />
               {/* Step number */}
-              <div className="absolute -top-4 -left-4 w-12 h-12 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-20">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-slate-950 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg z-20">
                 {index + 1}
               </div>
               {/* Connection line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-blue-900/20 transform -translate-y-1/2 z-10"></div>
+                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-slate-950/20 transform -translate-y-1/2 z-10"></div>
               )}
             </div>
           ))}
@@ -196,10 +197,10 @@ const WhyChooseUs = () => {
     <section className="py-24 bg-gradient-to-b from-blue-50/30 to-white">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-20">
-          <div className="inline-block px-6 py-2 bg-blue-900 text-white rounded-full text-sm font-semibold mb-6">
+          <div className="inline-block px-6 py-2 bg-slate-950 text-white rounded-full text-sm font-semibold mb-6">
             WHY CHOOSE US
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8">
+          <h2 className="text-5xl md:text-6xl font-bold text-slate-950 mb-8">
             Our Advantages
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -258,17 +259,17 @@ const CompanySection = () => {
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-900/5 rounded-full transform translate-x-48 -translate-y-48"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-slate-950/5 rounded-full transform translate-x-48 -translate-y-48"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-800/5 rounded-full transform -translate-x-40 translate-y-40"></div>
       </div>
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <div className="inline-block px-6 py-2 bg-blue-900 text-white rounded-full text-sm font-semibold mb-8">
+            <div className="inline-block px-6 py-2 bg-slate-950 text-white rounded-full text-sm font-semibold mb-8">
               ABOUT US
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold text-blue-900 mb-8 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-bold text-slate-950 mb-8 leading-tight">
               About Our Company
             </h2>
             <p className="text-xl text-gray-700 mb-10 leading-relaxed">
@@ -283,7 +284,7 @@ const CompanySection = () => {
               {stats.map((stat, index) => (
                 <div key={index} className="relative group">
                   <div className="bg-white border-2 border-blue-900/10 rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 hover:border-blue-900/30">
-                    <div className="text-4xl font-bold text-blue-900 mb-2">
+                    <div className="text-4xl font-bold text-slate-950 mb-2">
                       {stat.number}
                     </div>
                     <div className="text-gray-600 font-medium">
@@ -294,7 +295,7 @@ const CompanySection = () => {
               ))}
             </div>
 
-            <button className="group bg-blue-900 hover:bg-blue-800 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
+            <button className="group bg-slate-950 hover:bg-slate-800 text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center">
               <span className="mr-3">Learn More About Us</span>
               <ArrowRight
                 size={20}
@@ -312,11 +313,11 @@ const CompanySection = () => {
                     key={index}
                     className="group flex items-start space-x-6 p-4 rounded-2xl hover:bg-blue-50/50 transition-all duration-300"
                   >
-                    <div className="flex-shrink-0 w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                    <div className="flex-shrink-0 w-16 h-16 bg-slate-950 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                       {value.icon}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-blue-900 mb-3">
+                      <h3 className="text-2xl font-bold text-slate-950 mb-3">
                         {value.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed">
@@ -329,8 +330,8 @@ const CompanySection = () => {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-900 rounded-2xl opacity-10 transform rotate-12"></div>
-            <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-blue-800 rounded-full opacity-10"></div>
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-slate-950 rounded-2xl opacity-10 transform rotate-12"></div>
+            <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-slate-800 rounded-full opacity-10"></div>
           </div>
         </div>
       </div>
@@ -342,6 +343,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       <CompanySection />
+      <StatsSection />
       <HowItWorks />
       <WhyChooseUs />
     </div>
