@@ -8,7 +8,6 @@ import {
   Brain,
   ArrowUpRight,
   CheckCircle,
-  Star,
   Sparkles,
 } from "lucide-react";
 

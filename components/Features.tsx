@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Rocket, Target, Zap, ArrowRight } from "lucide-react";
+import { Rocket, Target, Zap } from "lucide-react";
 
 const FeaturesSection = () => {
   const ref = useRef(null);

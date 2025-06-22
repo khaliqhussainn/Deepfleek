@@ -4,7 +4,6 @@ import {
   Eye,
   Heart,
   MessageCircle,
-  Share2,
   Play,
   Award,
   Zap,
