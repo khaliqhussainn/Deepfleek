@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
@@ -8,7 +9,11 @@ const ContactInfoSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const contactInfo = [
-    { icon: MapPin, title: "Address", description: "123 Tech Street, Innovation City, IC 12345" },
+    {
+      icon: MapPin,
+      title: "Address",
+      description: "123 Tech Street, Innovation City, IC 12345",
+    },
     { icon: Phone, title: "Phone", description: "+1 (123) 456-7890" },
     { icon: Mail, title: "Email", description: "info@deepfleek.com" },
   ];
@@ -25,7 +30,9 @@ const ContactInfoSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact Information</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Contact Information
+          </h2>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
             Here's how you can reach us.
           </p>

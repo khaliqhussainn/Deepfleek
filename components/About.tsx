@@ -1,82 +1,141 @@
+import React from "react";
+import { ArrowRight, TrendingUp, DollarSign, Users, Star } from "lucide-react";
 
-"use client";
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
-
-const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-
+const PortfolioComponent = () => {
   return (
-    <section ref={ref} className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-950">
-              Innovation Meets Excellence
-            </h2>
-            <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-              At DeepFleek, we're not just building solutions – we're crafting the future. Our team of experts combines deep technical knowledge with creative problem-solving to deliver results that exceed expectations.
-            </p>
-            <p className="text-lg text-gray-500 mb-8 leading-relaxed">
-              From concept to deployment, we ensure every project is executed with precision, innovation, and a relentless focus on quality.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-                Our Story <ArrowRight className="w-4 h-4" />
-              </button>
-              <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-50">
-                Meet the Team
-              </button>
+    <div className="min-h-screen bg-white text-slate-950 p-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          {/* Left Content */}
+          <div className="space-y-6">
+            <div className="text-sm text-cyan-400 font-medium">
+              Featured Case Study
             </div>
-          </motion.div>
+            <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
+              Logo, Identity & Web Design for Uber
+            </h1>
+            <p className="text-gray-800 text-lg leading-relaxed">
+              Design menus lorem, suscipit sit at sapien sit amet, dictum
+              lacinia lorem. In vel hendrerit elit. Vestibulum eget risus velit.
+              Aliquam bibendum lorem et dui posuere at placerat arcu lobortis.
+            </p>
+            <p className="text-gray-800 leading-relaxed">
+              Maecenas lorem magna, elementum ut dignissim et, imperdiet vitae
+              mauris.
+            </p>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 shadow-xl border border-blue-100">
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="text-lg text-gray-700">
-                    Agile Development Process
-                  </span>
+
+          </div>
+
+          {/* Right Illustration */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl p-8 h-80 flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-300/20 to-transparent"></div>
+
+              {/* Light bulb illustration */}
+              <div className="relative z-10">
+                <div className="w-24 h-32 mx-auto mb-4">
+                  <div className="w-full h-20 bg-white/20 rounded-full border-4 border-white/40 relative">
+                    <div className="absolute inset-2 bg-white/30 rounded-full"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/50 rounded-full"></div>
+                  </div>
+                  <div className="w-12 h-8 bg-white/30 mx-auto mt-2 rounded-sm"></div>
+                  <div className="w-16 h-4 bg-white/40 mx-auto mt-1 rounded-sm"></div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="text-lg text-gray-700">
-                    24/7 Technical Support
-                  </span>
+
+                {/* Floating dollar signs */}
+                <div className="absolute top-8 left-8 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center">
+                  <DollarSign size={16} className="text-yellow-800" />
                 </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="text-lg text-gray-700">
-                    Scalable Architecture
-                  </span>
+                <div className="absolute top-16 right-12 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center">
+                  <DollarSign size={16} className="text-yellow-800" />
                 </div>
-                <div className="flex items-center gap-4">
-                  <CheckCircle className="w-6 h-6 text-green-500" />
-                  <span className="text-lg text-gray-700">
-                    Quality Assurance
-                  </span>
+                <div className="absolute bottom-20 left-12 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center">
+                  <DollarSign size={16} className="text-yellow-800" />
                 </div>
+                <div className="absolute bottom-16 right-8 w-8 h-8 bg-yellow-300 rounded-full flex items-center justify-center">
+                  <DollarSign size={16} className="text-yellow-800" />
+                </div>
+
+                {/* Light rays */}
+                <div className="absolute top-4 left-1/2 w-1 h-8 bg-yellow-300 transform -translate-x-1/2 -rotate-12"></div>
+                <div className="absolute top-4 left-1/2 w-1 h-8 bg-yellow-300 transform -translate-x-1/2 rotate-12"></div>
+                <div className="absolute top-8 right-4 w-1 h-8 bg-yellow-300 transform rotate-45"></div>
+                <div className="absolute top-8 left-4 w-1 h-8 bg-yellow-300 transform -rotate-45"></div>
               </div>
             </div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left Illustration */}
+          <div className="relative">
+            <div className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-2xl p-8 h-80 flex items-center justify-center relative overflow-hidden">
+              {/* Computer/Chart illustration */}
+              <div className="relative z-10 flex items-center gap-6">
+                {/* Laptop */}
+                <div className="relative">
+                  <div className="w-24 h-16 bg-gray-600 rounded-t-lg"></div>
+                  <div className="w-28 h-2 bg-gray-500 rounded-b-xl -mt-1"></div>
+                  <div className="absolute top-2 left-2 right-2 bottom-2 bg-gray-800 rounded"></div>
+                  <div className="absolute top-3 left-3 right-3 bottom-3 bg-green-400 rounded opacity-80"></div>
+                </div>
+
+                {/* Chart */}
+                <div className="flex items-end gap-1 h-20">
+                  <div className="w-3 h-8 bg-cyan-400 rounded-t"></div>
+                  <div className="w-3 h-12 bg-cyan-400 rounded-t"></div>
+                  <div className="w-3 h-16 bg-cyan-400 rounded-t"></div>
+                  <div className="w-3 h-10 bg-cyan-400 rounded-t"></div>
+                </div>
+
+                {/* Large bulb */}
+                <div className="w-16 h-16 bg-gradient-to-br from-green-300 to-green-500 rounded-full opacity-80 relative">
+                  <div className="absolute inset-2 bg-white/30 rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Floating dollar signs */}
+              <div className="absolute top-6 left-6 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                <DollarSign size={14} className="text-yellow-800" />
+              </div>
+              <div className="absolute top-12 right-8 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                <DollarSign size={14} className="text-yellow-800" />
+              </div>
+              <div className="absolute bottom-12 left-8 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                <DollarSign size={14} className="text-yellow-800" />
+              </div>
+              <div className="absolute bottom-6 right-6 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
+                <DollarSign size={14} className="text-yellow-800" />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Content */}
+          <div className="space-y-6">
+            <h2 className="text-3xl lg:text-4xl font-bold">
+              My Regime Design, Development And Marketing.
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              Nulla et velit gravida, feugiat quam a, molestie ante. Mauris
+              posuere suscipit dui, eget bibendum tellus blandit at. Praesent
+              non lorem sed ligula commodo blandit et ut magna. Quisque
+              efficitur lorem ut dolor rutrum commodo.
+            </p>
+            <p className="text-gray-400 leading-relaxed">
+              Nulla pharetra hendrerit mi quis dignissim. Quisque luctus, tortor
+              a commodo fermentum, est lacus condimentum est, ut pharetra odio
+              enim eget ipsum.
+            </p>
+
+            
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default AboutSection;
+export default PortfolioComponent;

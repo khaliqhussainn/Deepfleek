@@ -18,7 +18,7 @@ const HomePage = () => {
       <ServicesSection />
       <ProcessSection />
       <TestimonialsSection />
-      <TechnologiesSection />
+      {/* <TechnologiesSection /> */}
       <CTASection />
     </div>
   );
