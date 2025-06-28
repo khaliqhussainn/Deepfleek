@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import {
   Brain,
@@ -39,6 +39,20 @@ const ResearchPage = () => {
   const collaborationRef = useRef(null);
   const facilitiesRef = useRef(null);
   const [activeTab, setActiveTab] = useState("all");
+  const [windowWidth, setWindowWidth] = useState(0); // Initialize with 0 or a default value
+
+  // Handle window resize
+  useEffect(() => {
+    // Only run this effect on the client side
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+      const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
 
   const isHeroInView = useInView(heroRef, { once: true, amount: 0.3 });
   const isResearchAreasInView = useInView(researchAreasRef, {
@@ -261,11 +275,16 @@ const ResearchPage = () => {
     activeTab === "all"
       ? publications
       : publications.filter((pub) => pub.category === activeTab);
-
   const categories = [
     "all",
     ...Array.from(new Set(publications.map((pub) => pub.category))),
   ];
+
+  const getChartHeightDivisor = () => {
+    if (windowWidth < 640) return 2;
+    if (windowWidth < 1024) return 1.5;
+    return 1.2;
+  };
 
   return (
     <div className="relative max-w-7xl mx-auto">
@@ -274,7 +293,7 @@ const ResearchPage = () => {
         ref={heroRef}
         className="relative h-auto pt-24 sm:pt-40 pb-20 flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white overflow-hidden"
       >
-        {/* Advanced Background Elements */}
+        {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse" />
           <div
@@ -318,14 +337,12 @@ const ResearchPage = () => {
               </span>
             </div>
           </div>
-
           <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
             Pushing the{" "}
             <span className="bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Boundaries
             </span>
           </h1>
-
           <div className="flex items-center justify-center mb-8">
             <div className="w-20 h-1 bg-purple-400 rounded-full"></div>
             <div className="w-6 h-6 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full mx-4 flex items-center justify-center">
@@ -333,7 +350,6 @@ const ResearchPage = () => {
             </div>
             <div className="w-20 h-1 bg-blue-400 rounded-full"></div>
           </div>
-
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto text-blue-100 leading-relaxed font-light">
             Pioneering breakthrough research in{" "}
             <span className="text-purple-300 font-semibold">
@@ -349,7 +365,6 @@ const ResearchPage = () => {
             </span>{" "}
             that shape the future.
           </p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -375,7 +390,6 @@ const ResearchPage = () => {
               </div>
             ))}
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : {}}
@@ -403,7 +417,6 @@ const ResearchPage = () => {
             style={{ animationDelay: "2s" }}
           />
         </div>
-
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -422,7 +435,6 @@ const ResearchPage = () => {
               innovation and solving complex challenges across industries.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {researchAreas.map((area, index) => (
               <motion.div
@@ -436,13 +448,11 @@ const ResearchPage = () => {
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${area.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
                   ></div>
-
                   <div className="absolute top-4 right-4 flex items-center space-x-2">
                     <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium text-blue-200 border border-white/30">
                       {area.category}
                     </span>
                   </div>
-
                   <div className="relative mb-6">
                     <div
                       className={`w-16 h-16 bg-gradient-to-br ${area.gradient} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
@@ -453,7 +463,6 @@ const ResearchPage = () => {
                       className={`absolute -inset-3 bg-gradient-to-br ${area.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300`}
                     ></div>
                   </div>
-
                   <div className="relative z-10 mb-6">
                     <h3 className="text-xl font-bold mb-4 text-white group-hover:text-purple-200 transition-colors duration-300">
                       {area.title}
@@ -462,7 +471,6 @@ const ResearchPage = () => {
                       {area.description}
                     </p>
                   </div>
-
                   <div className="relative z-10 mb-4">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {area.technologies.map((tech, techIndex) => (
@@ -475,7 +483,6 @@ const ResearchPage = () => {
                       ))}
                     </div>
                   </div>
-
                   <div className="relative z-10 flex justify-between items-center text-sm text-blue-300">
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-1">
@@ -505,7 +512,6 @@ const ResearchPage = () => {
           <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] bg-[url('/grid-pattern.svg')] bg-[length:60px_60px]"></div>
           <div className="absolute top-20 right-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
         </div>
-
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -524,7 +530,6 @@ const ResearchPage = () => {
               breakthrough innovations across disciplines.
             </p>
           </motion.div>
-
           {/* Lab Showcase */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {[
@@ -597,7 +602,6 @@ const ResearchPage = () => {
                     <p className="text-white/90 text-sm">{lab.description}</p>
                   </div>
                 </div>
-
                 <div className="bg-white p-6">
                   <h4 className="font-medium text-gray-900 mb-3">
                     Key Equipment:
@@ -612,7 +616,6 @@ const ResearchPage = () => {
                       </li>
                     ))}
                   </ul>
-
                   <div className="flex items-center justify-between">
                     <button className="text-sm font-medium text-purple-600 hover:text-purple-800 flex items-center transition-colors">
                       <span>View Lab Details</span>
@@ -627,7 +630,6 @@ const ResearchPage = () => {
               </motion.div>
             ))}
           </div>
-
           {/* Facility Metrics */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -684,7 +686,6 @@ const ResearchPage = () => {
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
         </div>
-
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -703,7 +704,6 @@ const ResearchPage = () => {
               our research initiatives.
             </p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
@@ -765,7 +765,6 @@ const ResearchPage = () => {
               </motion.div>
             ))}
           </div>
-
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={isCollaborationInView ? { opacity: 1, y: 0 } : {}}
@@ -786,7 +785,6 @@ const ResearchPage = () => {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
-
               <div className="order-1 lg:order-2 bg-white/5 backdrop-blur-lg rounded-lg sm:rounded-xl p-4 sm:p-6 h-48 sm:h-56 lg:h-64 flex items-center justify-center border border-white/10">
                 {/* Chart component */}
                 <div className="text-center w-full">
@@ -800,12 +798,7 @@ const ResearchPage = () => {
                         className="w-4 sm:w-6 lg:w-8 bg-gradient-to-t from-purple-400 to-blue-400 rounded-t-sm"
                         style={{
                           height: `${
-                            value /
-                            (window.innerWidth < 640
-                              ? 2
-                              : window.innerWidth < 1024
-                              ? 1.5
-                              : 1.2)
+                            value / getChartHeightDivisor()
                           }px`,
                         }}
                       ></div>
@@ -815,7 +808,7 @@ const ResearchPage = () => {
                     {["2019", "2020", "2021", "2022", "2023", "2024"].map(
                       (year, i) => (
                         <span key={i} className="text-xs sm:text-sm">
-                          {window.innerWidth < 640 ? year.slice(-2) : year}
+                          {windowWidth < 640 ? year.slice(-2) : year}
                         </span>
                       )
                     )}
@@ -841,7 +834,6 @@ const ResearchPage = () => {
             transform: translateY(-20px);
           }
         }
-
         @keyframes float-delay-1 {
           0%,
           100% {
@@ -851,7 +843,6 @@ const ResearchPage = () => {
             transform: translateY(-15px);
           }
         }
-
         @keyframes float-delay-2 {
           0%,
           100% {
@@ -861,7 +852,6 @@ const ResearchPage = () => {
             transform: translateY(-25px);
           }
         }
-
         @keyframes float-delay-3 {
           0%,
           100% {
@@ -871,19 +861,15 @@ const ResearchPage = () => {
             transform: translateY(-18px);
           }
         }
-
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
-
         .animate-float-delay-1 {
           animation: float-delay-1 6s ease-in-out infinite 1s;
         }
-
         .animate-float-delay-2 {
           animation: float-delay-2 6s ease-in-out infinite 2s;
         }
-
         .animate-float-delay-3 {
           animation: float-delay-3 6s ease-in-out infinite 3s;
         }
