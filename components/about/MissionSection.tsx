@@ -101,11 +101,11 @@ const MissionSection = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
-              className="group relative"
+              className="group relative "
             >
-              <div className="bg-white/10 backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 h-full">
+              <div className="bg-white/10  backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:scale-105 h-full">
                 <div className="relative mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 mx-auto">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center  group-hover:scale-110 transition-transform duration-300 mx-auto">
                     <card.icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="absolute -inset-3 bg-gradient-to-br from-blue-400/30 to-blue-600/30 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

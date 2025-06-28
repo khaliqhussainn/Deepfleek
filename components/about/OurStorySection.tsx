@@ -311,13 +311,13 @@ const CompanySection = () => {
                 {values.map((value, index) => (
                   <div
                     key={index}
-                    className="group flex items-start space-x-6 p-4 rounded-2xl hover:bg-blue-50/50 transition-all duration-300"
+                    className="group flex  flex-col sm:flex-row items-center justify-center space-x-6 p-4 gap-4 rounded-2xl hover:bg-blue-50/50 transition-all duration-300"
                   >
                     <div className="flex-shrink-0 w-16 h-16 bg-slate-950 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                       {value.icon}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-950 mb-3">
+                      <h3 className="text-2xl font-bold text-slate-950 mb-3 ">
                         {value.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed">

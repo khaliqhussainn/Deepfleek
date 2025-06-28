@@ -19,10 +19,13 @@ export default function Header() {
     { name: "Cloud Solutions", href: "/services/cloud-solutions" },
     { name: "Software Development", href: "/services/software-development" },
     { name: "Cybersecurity", href: "/services/cybersecurity" },
-    { name: "Digital Transformation", href: "/services/digital-transformation" },
+    {
+      name: "Digital Transformation",
+      href: "/services/digital-transformation",
+    },
     { name: "IT Consulting", href: "/services/it-consulting" },
     { name: "System Integration", href: "/services/system-integration" },
-    { name: "Technical Support", href: "/services/technical-support" }
+    { name: "Technical Support", href: "/services/technical-support" },
   ];
 
   useEffect(() => {
@@ -37,7 +40,11 @@ export default function Header() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && event.target && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        event.target &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsServicesDropdownOpen(false);
       }
     };
@@ -58,8 +65,10 @@ export default function Header() {
     setIsMobileServicesOpen(false);
   };
 
-  // Toggle services dropdown
-  const toggleServicesDropdown = () => {
+  // Handle services dropdown toggle with prevent default
+  const handleServicesDropdownToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
 
@@ -80,7 +89,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link
-            href="/home"
+            href="/"
             className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-500 transition-all duration-300 transform hover:scale-105"
           >
             DeepFleek
@@ -116,31 +125,37 @@ export default function Header() {
               Research
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300"></span>
             </Link>
-            
+
             {/* Services Dropdown */}
             <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={toggleServicesDropdown}
+              <Link
+                href="/service"
                 className="text-white hover:text-cyan-400 transition-all duration-300 font-medium relative group flex items-center space-x-1"
               >
                 <span>Services</span>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    isServicesDropdownOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={handleServicesDropdownToggle}
+                  className="ml-1 p-1 hover:bg-blue-800/30 rounded transition-all duration-200"
+                  aria-label="Toggle services dropdown"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isServicesDropdownOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-              </button>
+              </Link>
             </div>
 
             <Link
@@ -267,34 +282,48 @@ export default function Header() {
                 <span>Research</span>
               </div>
             </Link>
-            
-            {/* Mobile Services Dropdown */}
+
+            {/* Mobile Services - Direct Link with Dropdown */}
             <div>
-              <button
-                onClick={toggleMobileServices}
-                className="w-full text-left text-white hover:text-cyan-400 transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-blue-800/40 flex items-center justify-between"
+              <Link
+                href="/service"
+                className="w-full text-left text-white hover:text-cyan-400 transition-all duration-300 font-medium py-3 px-4 rounded-xl hover:bg-blue-800/40 flex items-center justify-between group"
+                onClick={handleMobileLinkClick}
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"></div>
                   <span>Services</span>
                 </div>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    isMobileServicesOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileServices();
+                  }}
+                  className="p-3 hover:bg-blue-800/30 rounded transition-all duration-200"
+                  aria-label="Toggle services dropdown "
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isMobileServicesOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  {/* <span className="">
+                    services submenu
+                  </span> */}
+                </button>
+              </Link>
+
               {/* Mobile Services Submenu - Scrollable */}
               <div
                 className={`transition-all duration-300 ease-in-out ${

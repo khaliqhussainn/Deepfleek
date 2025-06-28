@@ -770,41 +770,53 @@ const ResearchPage = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={isCollaborationInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-20 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-3xl p-8 border border-white/10"
+            className="mt-12 sm:mt-16 lg:mt-20 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 border border-white/10"
           >
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-3xl font-bold text-white mb-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+              <div className="order-2 lg:order-1">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">
                   Research Publications Timeline
                 </h3>
-                <p className="text-blue-100 mb-6 leading-relaxed">
+                <p className="text-blue-100 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                   Our publication output has grown exponentially over the past 5
                   years, with increasing impact across multiple disciplines.
                 </p>
-                <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 flex items-center space-x-2">
+                <button className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg sm:rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 flex items-center justify-center sm:justify-start space-x-2 text-sm sm:text-base">
                   <span>View All Publications</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
-              <div className="bg-white/5 backdrop-blur-lg rounded-xl p-6 h-64 flex items-center justify-center border border-white/10">
-                {/* This would be replaced with an actual chart component */}
-                <div className="text-center">
-                  <div className="text-blue-300 mb-2">
+
+              <div className="order-1 lg:order-2 bg-white/5 backdrop-blur-lg rounded-lg sm:rounded-xl p-4 sm:p-6 h-48 sm:h-56 lg:h-64 flex items-center justify-center border border-white/10">
+                {/* Chart component */}
+                <div className="text-center w-full">
+                  <div className="text-blue-300 mb-2 text-xs sm:text-sm">
                     Publication Growth (2019-2024)
                   </div>
-                  <div className="flex items-end justify-center space-x-2 h-40">
+                  <div className="flex items-end justify-center space-x-1 sm:space-x-2 h-24 sm:h-32 lg:h-40">
                     {[15, 32, 48, 67, 89, 102].map((value, i) => (
                       <div
                         key={i}
-                        className="w-8 bg-gradient-to-t from-purple-400 to-blue-400 rounded-t-sm"
-                        style={{ height: `${value / 1.2}px` }}
+                        className="w-4 sm:w-6 lg:w-8 bg-gradient-to-t from-purple-400 to-blue-400 rounded-t-sm"
+                        style={{
+                          height: `${
+                            value /
+                            (window.innerWidth < 640
+                              ? 2
+                              : window.innerWidth < 1024
+                              ? 1.5
+                              : 1.2)
+                          }px`,
+                        }}
                       ></div>
                     ))}
                   </div>
-                  <div className="flex justify-center space-x-8 mt-3 text-xs text-blue-200">
+                  <div className="flex justify-center space-x-2 sm:space-x-4 lg:space-x-8 mt-2 sm:mt-3 text-xs text-blue-200">
                     {["2019", "2020", "2021", "2022", "2023", "2024"].map(
                       (year, i) => (
-                        <span key={i}>{year}</span>
+                        <span key={i} className="text-xs sm:text-sm">
+                          {window.innerWidth < 640 ? year.slice(-2) : year}
+                        </span>
                       )
                     )}
                   </div>
