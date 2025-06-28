@@ -59,7 +59,19 @@ export default function Header() {
               About
             </Link>
             <Link
-              href="/services"
+              href="/product"
+              className="text-white hover:text-blue-400 transition-colors font-medium"
+            >
+              Products
+            </Link>
+            <Link
+              href="/research"
+              className="text-white hover:text-blue-400 transition-colors font-medium"
+            >
+              Research
+            </Link>
+            <Link
+              href="/service"
               className="text-white hover:text-blue-400 transition-colors font-medium"
             >
               Services
@@ -73,7 +85,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-white hover:text-blue-400 transition-colors p-2"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
@@ -136,7 +148,21 @@ export default function Header() {
               About
             </Link>
             <Link
-              href="/services"
+              href="/product"
+              className="block text-white hover:text-blue-400 transition-colors font-medium py-2 px-4 rounded hover:bg-blue-800/30"
+              onClick={handleMobileLinkClick}
+            >
+              Products
+            </Link>
+            <Link
+              href="/research"
+              className="block text-white hover:text-blue-400 transition-colors font-medium py-2 px-4 rounded hover:bg-blue-800/30"
+              onClick={handleMobileLinkClick}
+            >
+              Research
+            </Link>
+            <Link
+              href="/service"
               className="block text-white hover:text-blue-400 transition-colors font-medium py-2 px-4 rounded hover:bg-blue-800/30"
               onClick={handleMobileLinkClick}
             >
